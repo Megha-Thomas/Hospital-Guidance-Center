@@ -1,0 +1,91 @@
+<DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="assets_login/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets_login/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets_login/css/style.css" rel="stylesheet">
+    <title>Form</title>
+    <img src="assets/img/logo/logo.png" alt="">
+
+  </head>
+  <body>
+    <section class="form-08">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="_form-08-main">
+              <div class="_form-08-head">
+                <h2>Welcome Back</h2>
+              </div>
+
+              <form id="loginForm" action="#" method="post">
+                <div class="form-group">
+                  <label for="email">Enter Your Email</label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email" required aria-required="true">
+                  <span id="emailError" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Enter Password</label>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required aria-required="true">
+                  <span id="passwordError" class="text-danger"></span>
+                </div>
+
+                <div class="checkbox mb-0 form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">
+                      Remember me
+                    </label>
+                  </div>
+                  <a href="file:///C:/xampp/htdocs/hospital%20guidence/forgot_password.html">Forgot Password</a>
+                </div>
+
+                <div class="form-group">
+                  <div class="_btn_04">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                  </div>
+                </div>
+              </form>
+
+              <div class="sub-01">
+                <img src="assets/images/shap-02.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Form validation using JavaScript
+      document.getElementById("loginForm").addEventListener("submit", function (event) {
+        // Reset previous error messages
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("passwordError").textContent = "";
+
+        // Get form inputs
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        // Email validation (simple check for "@" character)
+        if (email.indexOf("@") === -1) {
+          document.getElementById("emailError").textContent = "Invalid email format";
+          event.preventDefault(); // Prevent form submission
+        }
+
+        // Password validation (minimum length)
+        if (password.length < 6) {
+          document.getElementById("passwordError").textContent = "Password must be at least 6 characters";
+          event.preventDefault(); // Prevent form submission
+        }
+      });
+    </script>
+  </body>
+</html>
