@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Appointment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="tel"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Appointment Booking</h1>
+
+    <form id="appointmentForm" onsubmit="return validateForm()">
+        <label for="patientName">Patient Name:</label>
+        <input type="text" id="patientName" name="patientName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="appointmentDate">Appointment Date:</label>
+        <input type="date" id="appointmentDate" name="appointmentDate" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+        <input type="submit" value="Book Appointment">
+    </form>
+
+    <div id="errorMessages" class="error"></div>
+</div>
+
+<script>
+function validateForm() {
+    var patientName = document.getElementById("patientName").value;
+    var email = document.getElementById("email").value;
+    var appointmentDate = document.getElementById("appointmentDate").value;
+    var phone = document.getElementById("phone").value;
+
+    var errorMessages = [];
+
+    if (patientName === "") {
+        errorMessages.push("Patient name is required.");
+    }
+
+    if (email === "") {
+        errorMessages.push("Email is required.");
+    } else if (!isValidEmail(email)) {
+        errorMessages.push("Invalid email address.");
+    }
+
+    if (appointmentDate === "") {
+        errorMessages.push("Appointment date is required.");
+    }
+
+    if (phone === "") {
+        errorMessages.push("Phone number is required.");
+    } else if (!isValidPhoneNumber(phone)) {
+        errorMessages.push("Invalid phone number. Please enter a 10-digit number.");
+    }
+
+    var errorDiv = document.getElementById("errorMessages");
+    errorDiv.innerHTML = "";
+
+    if (errorMessages.length > 0) {
+        for (var i = 0; i < errorMessages.length; i++) {
+            errorDiv.innerHTML += "<p>" + errorMessages[i] + "</p>";
+        }
+        return false;
+    }
+
+    return true;
+}
+
+function isValidEmail(email) {
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(email);
+}
+
+function isValidPhoneNumber(phone) {
+    var phonePattern = /^\d{10}$/;
+    return phonePattern.test(phone);
+}
+</script>
+
+</body>
+</html>
