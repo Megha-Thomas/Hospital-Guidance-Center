@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Registra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- LINEARICONS -->
+  <link rel="stylesheet" href="fonts/linearicons/style.css">
+  <!-- STYLE CSS -->
+  <link rel="stylesheet" href="assets_register/css/style.css">
+  <img src="assets/img/logo/logo.png" alt="">
+
+</head>
+<body>
+  <div class="wrapper">
+    <div class="inner">
+      
+      <form id="registrationForm" action="" onsubmit="return validateForm()">
+        <h3>New Account?</h3>
+        <div class="form-holder">
+          <span class="lnr lnr-user"></span>
+          <input type="text" class="form-control" placeholder="Username" id="username">
+        </div>
+        <div class="form-holder">
+          <span class="lnr lnr-phone-handset"></span>
+          <input type="text" class="form-control" placeholder="Phone Number" id="phoneNumber">
+        </div>
+        <div class="form-holder">
+          <span class="lnr lnr-envelope"></span>
+          <input type="text" class="form-control" placeholder="Mail" id="email">
+        </div>
+        <div class="form-holder">
+          <span class="lnr lnr-lock"></span>
+          <input type="password" class="form-control" placeholder="Password" id="password">
+        </div>
+        <div class="form-holder">
+          <span class="lnr lnr-lock"></span>
+          <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword">
+        </div>
+        <button type="submit">
+          <span>Register</span>
+        </button>
+      </form>
+      <img src="assets_register/images/image-2.png" alt="" class="image-2">
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      // Get input field values
+      var username = document.getElementById("username").value;
+      var phoneNumber = document.getElementById("phoneNumber").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+
+      // Simple validation checks
+      if (username === "") {
+        alert("Username cannot be empty");
+        return false;
+      }
+
+      if (phoneNumber === "") {
+        alert("Phone Number cannot be empty");
+        return false;
+      }
+
+      if (email === "") {
+        alert("Email cannot be empty");
+        return false;
+      }
+
+      if (password === "") {
+        alert("Password cannot be empty");
+        return false;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return false;
+      }
+
+      // If all validations pass, the form will submit
+      return true;
+    }
+  </script>
+</body>
+</html>
